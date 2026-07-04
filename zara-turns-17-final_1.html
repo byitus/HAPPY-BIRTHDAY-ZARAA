@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZARA TURNS 17 💗 Official Puffin Broadcast</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,500;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#F9EBE6;
+  --bg2:#F6D6DF;
+  --magenta:#B3265C;
+  --pfpbeige:#E9DCD3;
+  --berry:#4A1631;
+  --pink:#FF4D8D;
+  --hotpink:#F2247A;
+  --blush:#FFB3CD;
+  --beak:#FF7A1F;
+  --gold:#FFC53D;
+  --coral:#E8503A;
+  --card:#FFF6FA;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito',sans-serif;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--berry);
+  overflow-x:hidden;
+  cursor:default;
+}
+h1,h2,h3,.display{font-family:'Fredoka',sans-serif}
+::selection{background:var(--pink);color:#fff}
+
+/* ---------- INTRO ANIMATION ---------- */
+#intro{position:fixed;inset:0;z-index:1000;overflow:hidden;
+  background:linear-gradient(180deg,#8F1D44,#F2247A 65%,#FF7A1F 140%);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .9s cubic-bezier(.7,0,.3,1)}
+#intro.done{transform:translateY(-101%)}
+.intro-inner{text-align:center;color:#fff;position:relative;width:100%;max-width:600px;padding:1rem;min-height:340px}
+#introPuffinWrap{position:absolute;top:0;left:-180px;width:120px;transition:left 1.5s cubic-bezier(.3,.9,.35,1)}
+#introPuffinWrap.arrive{left:calc(50% - 60px)}
+#introPuffinWrap svg{width:100%;overflow:visible}
+.iwing{transform-box:fill-box;transform-origin:top center;animation:flap .16s infinite alternate}
+@keyframes flap{from{transform:rotate(35deg)}to{transform:rotate(-45deg)}}
+#introPuffinWrap.arrive .iwing{animation-duration:.4s}
+.intro-text{font-family:'Fredoka',sans-serif;font-weight:600;
+  font-size:clamp(1rem,4.2vw,1.45rem);min-height:2.4em;margin-top:150px;
+  letter-spacing:.04em;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.intro-sub{font-weight:800;font-size:.85rem;opacity:.85;min-height:1.4em;margin-top:.3rem}
+.intro-pfp{width:118px;height:118px;margin:1.1rem auto 0;border-radius:50%;overflow:hidden;
+  border:4px solid #fff;opacity:0;transform:scale(.5) rotate(-15deg);position:relative;
+  transition:all .5s cubic-bezier(.34,1.56,.64,1);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.intro-pfp.show{opacity:1;transform:scale(1) rotate(0)}
+.intro-pfp svg{width:100%;height:100%;display:block}
+.scanline{position:absolute;left:0;right:0;height:3px;background:#fff;
+  box-shadow:0 0 14px 3px #fff;top:0;opacity:0}
+.intro-pfp.show .scanline{opacity:1;animation:scan .9s linear 2}
+@keyframes scan{from{top:0}to{top:100%}}
+#skipIntro{position:absolute;bottom:26px;right:26px;background:rgba(255,255,255,.15);
+  border:2px solid rgba(255,255,255,.7);color:#fff;border-radius:999px;
+  padding:.5rem 1.2rem;font-family:'Fredoka',sans-serif;font-size:.85rem;cursor:pointer}
+#skipIntro:hover{background:rgba(255,255,255,.3)}
+#gateBtns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;
+  margin-top:1.3rem;min-height:56px;position:relative}
+.gbtn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
+  background:#fff;color:#B3265C;border:none;border-radius:999px;
+  padding:.75rem 1.6rem;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.2);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);animation:popIn .3s both}
+.gbtn:hover{filter:brightness(1.05)}
+.gbtn:active{transform:translateY(3px)}
+.gbtn.ghost{background:rgba(255,255,255,.16);color:#fff;border:2px solid rgba(255,255,255,.8);box-shadow:none}
+.intro-pfp.small{width:80px;height:80px;margin-top:.6rem}
+.scanbar{width:min(280px,80%);height:12px;background:rgba(255,255,255,.25);
+  border-radius:999px;margin:1rem auto 0;overflow:hidden;display:none}
+.scanbar .sfill{height:100%;width:0%;background:#fff;border-radius:999px;transition:width .5s}
+#puffGlasses{transition:opacity .4s,transform .4s;transform:translateY(-8px)}
+#puffGlasses.on{opacity:1!important;transform:translateY(0)}
+.intro-heart-burst{position:absolute;font-size:1.3rem;pointer-events:none;
+  animation:iburst 1s ease-out forwards}
+@keyframes iburst{to{transform:translate(var(--dx),var(--dy)) scale(.3) rotate(40deg);opacity:0}}
+
+/* blinking puffin eyes */
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 4.6s infinite}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+
+/* wavy ZARA letters */
+.wavy span{display:inline-block;animation:ltr 1.8s ease-in-out infinite}
+@keyframes ltr{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* sparkles in hero */
+.sparkle{position:absolute;pointer-events:none;animation:spark 1.7s ease forwards;z-index:2}
+@keyframes spark{0%{opacity:0;transform:scale(.2) rotate(0)}30%{opacity:1;transform:scale(1.1) rotate(20deg)}100%{opacity:0;transform:scale(.3) translateY(-24px) rotate(45deg)}}
+
+/* ambient swimming fish */
+.swimfish{position:fixed;left:-70px;font-size:1.5rem;z-index:4;pointer-events:none;
+  opacity:.65;animation:swim linear forwards}
+@keyframes swim{to{transform:translateX(115vw)}}
+.swimfish.flip{left:auto;right:-70px;transform:scaleX(-1);animation-name:swimBack}
+@keyframes swimBack{to{transform:scaleX(-1) translateX(115vw)}}
+
+/* click heart pop */
+.pop{position:fixed;pointer-events:none;z-index:998;font-size:15px;
+  animation:popfly .7s ease-out forwards}
+@keyframes popfly{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+
+/* scroll reveal */
+section.pre{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+section.pre.rev{opacity:1;transform:none}
+
+/* doodle reference */
+.doodle-flex{display:flex;gap:1.4rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.doodle-ref{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.doodle-ref .ref-circle{width:130px;height:130px;border-radius:50%;overflow:hidden;
+  border:3px solid var(--blush);box-shadow:0 8px 20px rgba(200,60,120,.2);
+  animation:floaty 5s ease-in-out infinite}
+.doodle-ref svg{width:100%;height:100%;display:block}
+.doodle-ref span{font-weight:800;font-size:.8rem;color:#8A3B5E;letter-spacing:.1em}
+
+/* floating heart cursor trail */
+.trail{position:fixed;pointer-events:none;z-index:999;font-size:14px;
+  animation:trailFade .9s ease forwards}
+@keyframes trailFade{to{transform:translateY(-28px) scale(.3) rotate(20deg);opacity:0}}
+
+/* doodle hearts floating in bg */
+.bg-heart{position:absolute;pointer-events:none;opacity:.5;animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-22px) rotate(8deg)}}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:2rem 1rem 8rem;text-align:center;
+}
+.eyebrow{letter-spacing:.35em;font-weight:800;font-size:.72rem;color:var(--hotpink);
+  text-transform:uppercase;margin-bottom:.75rem;animation:fadeDown .8s ease both}
+.hero h1{font-size:clamp(2.5rem,9vw,5.6rem);font-weight:700;line-height:.98;
+  animation:fadeDown .8s .1s ease both}
+.hero h1 .pink{color:var(--pink)}
+.hero .seventeen{display:inline-block;color:var(--beak);animation:bob 3s ease-in-out infinite}
+.subtitle{max-width:34rem;margin:1rem auto 0;font-size:1.05rem;color:#8A3B5E;
+  animation:fadeDown .8s .2s ease both}
+.poke-hint{margin-top:.6rem;font-size:.85rem;font-style:italic;color:var(--hotpink);
+  animation:fadeDown .8s .3s ease both}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+
+.stage{position:relative;margin-top:1.4rem;animation:fadeDown .8s .35s ease both}
+#puffin{width:min(290px,68vw);cursor:pointer;transition:transform .15s;
+  filter:drop-shadow(0 18px 30px rgba(160,40,90,.3))}
+#puffin:active{transform:scale(.96)}
+.wobble{animation:wobble .5s ease}
+@keyframes wobble{0%{transform:rotate(0)}20%{transform:rotate(-7deg)}40%{transform:rotate(6deg)}
+  60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}100%{transform:rotate(0)}}
+.bubble{position:absolute;bottom:100%;left:50%;transform:translate(-50%,4px) scale(.9);
+  background:#fff;color:var(--berry);padding:.9rem 1.1rem;border-radius:18px;
+  border:2.5px solid var(--pink);
+  width:min(300px,82vw);font-weight:700;font-size:.95rem;line-height:1.35;
+  opacity:0;pointer-events:none;transition:all .25s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 10px 24px rgba(200,60,120,.25)}
+.bubble::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:11px solid transparent;border-top-color:var(--pink)}
+.bubble.show{opacity:1;transform:translate(-50%,-10px) scale(1)}
+
+/* ---------- SECTIONS ---------- */
+section{padding:4.5rem 1.25rem;max-width:900px;margin:0 auto;position:relative}
+.sec-label{color:var(--hotpink);letter-spacing:.3em;font-size:.7rem;font-weight:800;
+  text-transform:uppercase;margin-bottom:.5rem}
+section h2{font-size:clamp(1.8rem,5vw,2.7rem);font-weight:700;margin-bottom:1rem}
+section p.lead{color:#8A3B5E;max-width:40rem;margin-bottom:1.8rem;font-size:1.02rem}
+
+.card{background:var(--card);border-radius:24px;padding:1.6rem;
+  border:3px solid var(--blush);box-shadow:0 12px 30px rgba(200,60,120,.15)}
+
+.btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
+  background:var(--pink);color:#fff;border:none;cursor:pointer;
+  padding:.8rem 1.7rem;border-radius:999px;
+  box-shadow:0 6px 0 #C51E63;transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 #C51E63}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #C51E63}
+.btn:focus-visible{outline:3px solid var(--beak);outline-offset:3px}
+.btn.alt{background:var(--beak);box-shadow:0 6px 0 #c85a10}
+.btn.alt:hover{box-shadow:0 8px 0 #c85a10}
+.btn.alt:active{box-shadow:0 2px 0 #c85a10}
+
+/* ---------- BATTERY GAME (app whack-a-mole) ---------- */
+.batt-arena{position:relative;height:clamp(300px,62vw,380px);background:linear-gradient(180deg,#FFF0F6,#FFE0EC);
+  border-radius:18px;overflow:hidden;touch-action:manipulation;border:2px dashed var(--blush)}
+.phone{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:clamp(92px,24vw,118px);height:clamp(164px,42vw,206px);background:var(--berry);
+  border-radius:20px;padding:8px;box-shadow:0 12px 24px rgba(74,22,49,.35);z-index:2}
+.phone-screen{width:100%;height:100%;background:#2B0D1D;border-radius:14px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;
+  color:#fff;font-weight:800;position:relative;overflow:hidden}
+.batt-icon{width:52px;height:24px;border:3px solid #fff;border-radius:5px;position:relative}
+.batt-icon::after{content:'';position:absolute;right:-8px;top:5px;width:5px;height:8px;background:#fff;border-radius:1px}
+.batt-fill{position:absolute;left:2px;top:2px;bottom:2px;background:var(--coral);border-radius:2px;transition:width .3s,background .3s}
+.batt-pct{font-size:1.25rem;font-family:'Fredoka',sans-serif}
+.batt-toast{position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  background:var(--berry);color:#fff;padding:.5rem 1rem;border-radius:999px;
+  font-weight:800;font-size:.8rem;white-space:nowrap;max-width:95%;overflow:hidden;text-overflow:ellipsis;
+  opacity:0;transition:opacity .3s;z-index:6}
+.batt-toast.show{opacity:1}
+.batt-status{text-align:center;margin-top:1rem;font-weight:800;min-height:1.6rem;color:var(--hotpink)}
+.app{position:absolute;width:clamp(56px,15vw,68px);height:clamp(56px,15vw,68px);border-radius:16px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:3;
+  box-shadow:0 6px 14px rgba(74,22,49,.35);animation:appPop .25s cubic-bezier(.34,1.56,.64,1) both;
+  user-select:none;touch-action:manipulation}
+.app .ic{font-size:1.45rem;line-height:1}
+.app .nm{font-size:.5rem;font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);margin-top:2px;text-align:center;padding:0 3px}
+@keyframes appPop{from{transform:scale(0) rotate(-15deg)}to{transform:scale(1) rotate(0)}}
+.app.bye{animation:appBye .22s forwards}
+@keyframes appBye{to{transform:scale(0) rotate(35deg);opacity:0}}
+.zapnote{position:absolute;font-weight:900;color:var(--magenta);font-family:'Fredoka',sans-serif;
+  pointer-events:none;animation:zapUp 1s ease forwards;z-index:4}
+@keyframes zapUp{to{transform:translateY(-46px);opacity:0}}
+
+/* ---------- SLEEP GAME (temptation defense) ---------- */
+.sleep-arena{position:relative;height:clamp(300px,62vw,380px);border-radius:18px;overflow:hidden;
+  border:2px dashed var(--blush);touch-action:manipulation;
+  background:radial-gradient(2px 2px at 20% 30%,#fff8,transparent),
+    radial-gradient(2px 2px at 70% 20%,#fff7,transparent),
+    radial-gradient(1.5px 1.5px at 45% 60%,#fff6,transparent),
+    radial-gradient(2px 2px at 85% 45%,#fff8,transparent),
+    radial-gradient(1.5px 1.5px at 10% 70%,#fff5,transparent),
+    linear-gradient(180deg,#2B0D3A,#4A1631)}
+.sleep-clockface{position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.4rem;color:var(--gold);
+  background:rgba(0,0,0,.35);padding:.3rem 1.1rem;border-radius:999px;z-index:3}
+.sleep-moon{position:absolute;top:14px;right:16px;font-size:2rem;z-index:1;animation:floaty 6s ease-in-out infinite}
+.sleep-zara{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:2rem;z-index:1;opacity:.9}
+.tempt{position:absolute;bottom:-70px;background:#fff;border:2.5px solid var(--pink);color:var(--berry);
+  font-weight:800;font-size:clamp(.72rem,2.6vw,.85rem);padding:.55rem .85rem;border-radius:999px;
+  cursor:pointer;white-space:nowrap;z-index:2;box-shadow:0 6px 14px rgba(0,0,0,.35);
+  user-select:none;touch-action:manipulation}
+.tempt.pop{animation:tpop .2s forwards}
+@keyframes tpop{to{transform:scale(1.7);opacity:0}}
+.sleep-msg{position:absolute;inset:0;display:flex;flex-direction:column;gap:1rem;align-items:center;
+  justify-content:center;background:rgba(20,5,25,.68);backdrop-filter:blur(2px);z-index:5;color:#fff;
+  text-align:center;padding:1rem}
+.sleep-msg h3{font-size:1.4rem}
+.sleep-msg p{font-weight:700;line-height:1.45}
+
+/* ---------- DOODLE ---------- */
+.doodle-wrap{text-align:center}
+#doodleCanvas{background:#fff;border-radius:18px;border:3px solid var(--blush);
+  touch-action:none;cursor:crosshair;max-width:100%;box-shadow:inset 0 0 0 8px #FFF0F6;
+  flex:1 1 300px;min-width:250px;height:auto}
+.doodle-tools{display:flex;gap:.7rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.doodle-verdict{margin-top:1rem;font-weight:800;color:var(--hotpink);min-height:2.6rem;line-height:1.4}
+.swatch{width:38px;height:38px;border-radius:50%;border:3px solid #fff;cursor:pointer;
+  box-shadow:0 3px 8px rgba(0,0,0,.15);transition:transform .1s}
+.swatch:hover{transform:scale(1.12)}
+.swatch.sel{outline:3px solid var(--berry);outline-offset:2px}
+
+/* ---------- COUNCIL FILE (IG profile) ---------- */
+.ig-card{max-width:520px;margin:0 auto;background:#fff;border-radius:24px;
+  border:3px solid var(--blush);box-shadow:0 12px 30px rgba(200,60,120,.18);
+  padding:1.6rem;position:relative;overflow:hidden}
+.ig-stamp{position:absolute;top:16px;right:-38px;background:var(--magenta);color:#fff;
+  font-family:'Fredoka',sans-serif;font-size:.7rem;letter-spacing:.2em;
+  padding:.35rem 3rem;transform:rotate(35deg);box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.ig-top{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.ig-pfp{width:92px;height:92px;flex-shrink:0;border-radius:50%;overflow:hidden;
+  border:3px solid var(--blush);cursor:pointer;transition:transform .2s}
+.ig-pfp:hover{transform:rotate(-6deg) scale(1.06)}
+.ig-pfp svg{width:100%;height:100%;display:block}
+.ig-names h3{font-size:1.25rem;line-height:1.1}
+.ig-names .handle{font-weight:800;color:#8A3B5E;font-size:.9rem}
+.ig-stats{display:flex;gap:.7rem;margin-top:1.2rem}
+.ig-stat{flex:1;background:var(--card);border:2px solid var(--blush);border-radius:14px;
+  padding:.7rem .4rem;text-align:center;cursor:pointer;transition:transform .12s,background .12s}
+.ig-stat:hover{transform:translateY(-3px);background:#FFE4EE}
+.ig-stat b{display:block;font-family:'Fredoka',sans-serif;font-size:1.4rem;color:var(--magenta)}
+.ig-stat span{font-size:.7rem;font-weight:800;letter-spacing:.08em;color:#8A3B5E;text-transform:uppercase}
+.ig-verdict{margin-top:1rem;font-weight:800;color:var(--hotpink);min-height:3.2rem;
+  line-height:1.4;text-align:center;font-size:.95rem}
+.ig-follow{width:100%;margin-top:.9rem}
+
+/* ---------- CHAT / INTERROGATION ---------- */
+.chat{display:flex;flex-direction:column;gap:.7rem;max-height:380px;overflow-y:auto;
+  padding:.4rem;scroll-behavior:smooth}
+.msg{max-width:82%;padding:.7rem 1rem;border-radius:16px;font-weight:700;
+  font-size:.95rem;line-height:1.4;animation:popIn .25s ease both}
+.msg.puffin{background:#fff;border:2px solid var(--blush);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.zara{background:var(--pink);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+@keyframes popIn{from{opacity:0;transform:translateY(8px) scale(.95)}to{opacity:1;transform:none}}
+.chat-input{display:flex;gap:.6rem;margin-top:1rem}
+.chat-input input{flex:1;padding:.8rem 1.1rem;border-radius:999px;border:2.5px solid var(--blush);
+  font-family:'Nunito';font-weight:700;font-size:1rem;color:var(--berry);background:#fff;min-width:0}
+.chat-input input:focus{outline:none;border-color:var(--pink)}
+.typing{align-self:flex-start;font-size:1.4rem;letter-spacing:.2em;color:var(--blush);
+  animation:popIn .2s both}
+
+/* ---------- CAKE ---------- */
+.cake-zone{text-align:center}
+#cakeSvg{width:min(340px,82vw);filter:drop-shadow(0 14px 28px rgba(200,60,120,.3))}
+.flame{transform-origin:center bottom;animation:flicker .35s infinite alternate}
+@keyframes flicker{from{transform:scaleY(1) rotate(-3deg)}to{transform:scaleY(1.25) rotate(3deg)}}
+.flame.out{display:none}
+.wish{margin-top:1rem;font-size:1.1rem;font-weight:800;color:var(--hotpink);min-height:2rem}
+.candles-left{font-size:.85rem;color:#8A3B5E;margin-top:.4rem}
+
+/* ---------- FINALE ---------- */
+.finale{text-align:center;padding-bottom:6rem}
+.finale h2{font-size:clamp(2rem,7vw,3.4rem)}
+.finale .from{margin-top:1.5rem;color:#8A3B5E;font-style:italic}
+
+.confetti{position:fixed;top:-20px;pointer-events:none;z-index:99;border-radius:2px;animation:fall linear forwards}
+.confetti.heart{border-radius:0;background:none!important;font-size:16px}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+footer{padding:2rem;text-align:center;font-size:.75rem;color:#8A3B5E;opacity:.8}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .trail{display:none}
+}
+
+/* ---------- SNAKE PRANK ---------- */
+#scare{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:#000;overflow:hidden}
+#scare.on{display:flex}
+.snakewrap{animation:shakeAll .09s infinite}
+@keyframes shakeAll{0%{transform:translate(0,0)}25%{transform:translate(-7px,5px)}50%{transform:translate(6px,-6px)}75%{transform:translate(-5px,-4px)}100%{transform:translate(5px,6px)}}
+.snake{width:min(92vw,640px);animation:lunge .5s cubic-bezier(.2,1.7,.4,1) both}
+@keyframes lunge{0%{transform:scale(.04) rotate(-25deg)}55%{transform:scale(1.28)}100%{transform:scale(1.06)}}
+#scare .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:5}
+#scare .flash.go{animation:flashAnim .55s ease}
+@keyframes flashAnim{0%{opacity:0}12%{opacity:1}100%{opacity:0}}
+.laughwrap{display:none;flex-direction:column;align-items:center;gap:1rem;color:#fff;text-align:center;padding:1.5rem;max-width:34rem}
+.laughcat{font-size:clamp(4rem,20vw,7rem);animation:catlaugh .28s infinite alternate}
+@keyframes catlaugh{from{transform:rotate(-9deg) scale(1)}to{transform:rotate(9deg) scale(1.14)}}
+.hahas{font-family:'Fredoka',sans-serif;font-size:clamp(1.2rem,5.5vw,2rem);color:var(--pink);animation:catlaugh .22s infinite alternate}
+.gotcha{font-weight:800;line-height:1.45;font-size:.98rem}
+.shutter-cam{font-size:2.4rem;animation:popIn .3s both}
+
+/* mobile comfort */
+.chat-input input{font-size:16px}
+@media (max-width:520px){
+  section{padding:3.4rem .9rem}
+  .card{padding:1.1rem}
+  .intro-text{margin-top:130px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== reusable pfp replica (her actual heart doodle) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="hGrad" cx="42%" cy="42%" r="68%">
+      <stop offset="0%" stop-color="#7E1A3D"/>
+      <stop offset="50%" stop-color="#B3265C"/>
+      <stop offset="100%" stop-color="#E4A9BE"/>
+    </radialGradient>
+    <filter id="softBlur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6.5"/>
+    </filter>
+    <symbol id="pfpSym" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="100" fill="#E9DCD3"/>
+      <path d="M100 152 C58 118 44 84 64 64 C79 49 97 57 100 74 C103 57 121 49 136 64 C156 84 142 118 100 152 Z" fill="url(#hGrad)" filter="url(#softBlur)"/>
+      <g fill="none" stroke="#6B6360" stroke-width="1.8" opacity=".85" stroke-linecap="round">
+        <path d="M102 158 C55 120 40 82 66 60 C82 47 100 56 102 74 C106 55 126 46 140 60 C166 84 148 122 102 158 Z" transform="rotate(7 100 100)"/>
+        <path d="M98 150 C58 116 48 86 66 68 C80 55 96 62 99 76 C102 60 120 54 132 66 C152 86 138 118 98 150 Z" transform="rotate(-9 100 100) translate(5 -7)"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== INTRO ===== -->
+<div id="intro">
+  <div class="intro-inner">
+    <div id="introPuffinWrap">
+      <svg viewBox="0 0 120 90">
+        <ellipse class="iwing" cx="38" cy="38" rx="30" ry="11" fill="#2B0D1D"/>
+        <ellipse class="iwing" cx="82" cy="38" rx="30" ry="11" fill="#2B0D1D" style="animation-delay:.08s"/>
+        <ellipse cx="60" cy="48" rx="26" ry="30" fill="#4A1631"/>
+        <ellipse cx="60" cy="56" rx="17" ry="20" fill="#FFF6FA"/>
+        <circle cx="60" cy="28" r="18" fill="#4A1631"/>
+        <circle cx="54" cy="25" r="3" fill="#fff"/>
+        <circle cx="66" cy="25" r="3" fill="#fff"/>
+        <path d="M60 30 L78 35 Q68 44 60 41 Q52 44 42 35 Z" fill="#FF7A1F"/>
+        <path d="M50 78 l-5 6 h10 z" fill="#FF7A1F"/>
+        <path d="M70 78 l-5 6 h10 z" fill="#FF7A1F"/>
+        <g id="puffGlasses" opacity="0">
+          <circle cx="54" cy="25" r="7.5" fill="rgba(255,255,255,.18)" stroke="#FFC53D" stroke-width="2.6"/>
+          <circle cx="66" cy="25" r="7.5" fill="rgba(255,255,255,.18)" stroke="#FFC53D" stroke-width="2.6"/>
+          <line x1="60" y1="25" x2="61" y2="25" stroke="#FFC53D" stroke-width="2.6"/>
+          <line x1="46.5" y1="23" x2="41" y2="20" stroke="#FFC53D" stroke-width="2.6" stroke-linecap="round"/>
+          <line x1="73.5" y1="23" x2="79" y2="20" stroke="#FFC53D" stroke-width="2.6" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+    <div class="intro-text" id="introText"></div>
+    <div class="intro-sub" id="introSub"></div>
+    <div class="scanbar" id="scanbar"><div class="sfill" id="sfill"></div></div>
+    <div class="intro-pfp" id="introPfp">
+      <svg viewBox="0 0 200 200"><use href="#pfpSym"/></svg>
+      <div class="scanline"></div>
+    </div>
+    <div id="gateBtns"></div>
+  </div>
+  <button id="skipIntro">skip →</button>
+</div>
+
+
+<!-- ===== SNAKE PRANK ===== -->
+<div id="scare" aria-hidden="true">
+  <div class="flash"></div>
+  <div class="snakewrap">
+    <svg class="snake" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 16 C88 16 36 118 52 212 C64 280 128 328 200 328 C272 328 336 280 348 212 C364 118 312 16 200 16 Z" fill="#0E2E17"/>
+      <path d="M200 38 C112 38 70 124 82 202 C92 258 140 298 200 298 C260 298 308 258 318 202 C330 124 288 38 200 38 Z" fill="#1E5A2E"/>
+      <path d="M90 92 q10 -14 22 -4 M300 86 q12 -10 20 2 M112 60 q10 -12 20 -2 M272 56 q10 -12 20 -2 M200 46 q10 -10 0 0" stroke="#0B2413" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="150" cy="142" rx="27" ry="21" fill="#F6E27A"/>
+      <ellipse cx="250" cy="142" rx="27" ry="21" fill="#F6E27A"/>
+      <rect x="146" y="122" width="8" height="40" rx="4" fill="#B3000C"/>
+      <rect x="246" y="122" width="8" height="40" rx="4" fill="#B3000C"/>
+      <path d="M116 110 L184 127" stroke="#0B2413" stroke-width="11" stroke-linecap="round"/>
+      <path d="M284 110 L216 127" stroke="#0B2413" stroke-width="11" stroke-linecap="round"/>
+      <path d="M128 208 Q200 188 272 208 Q267 286 200 294 Q133 286 128 208 Z" fill="#4A0813"/>
+      <path d="M137 213 Q200 197 263 213 Q259 273 200 281 Q141 273 137 213 Z" fill="#8F1024"/>
+      <path d="M150 213 l13 36 l12 -32 z" fill="#fff"/>
+      <path d="M250 213 l-13 36 l-12 -32 z" fill="#fff"/>
+      <path d="M200 252 q-6 30 -18 44 M200 252 q6 30 18 44" stroke="#C41E3A" stroke-width="7" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="laughwrap">
+    <div class="shutter-cam">📸</div>
+    <div class="laughcat">😹</div>
+    <div class="hahas">HAHAHAHAHAHAHAHA</div>
+    <div class="gotcha">GOTCHA!! The council captured your face at the EXACT moment of the snake. The photo has been added to the file. Page two. Laminated. Forever. Happy birthday. 💗</div>
+    <button class="btn" id="scareClose">I HATE this website 😤 (continue)</button>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="bg-heart" style="top:12%;left:8%;font-size:2rem;animation-delay:.5s">💗</div>
+  <div class="bg-heart" style="top:20%;right:10%;font-size:1.5rem;animation-delay:1.4s">🩷</div>
+  <div class="bg-heart" style="bottom:26%;left:14%;font-size:1.7rem;animation-delay:2.2s">💖</div>
+  <div class="bg-heart" style="bottom:32%;right:7%;font-size:2.2rem;animation-delay:.9s">💗</div>
+
+  <div class="eyebrow">💗 Official Puffin Colony Broadcast 💗</div>
+  <h1>HAPPY BIRTHDAY<br><span class="pink wavy"><span>Z</span><span style="animation-delay:.1s">A</span><span style="animation-delay:.2s">R</span><span style="animation-delay:.3s">A</span></span>, YOU'RE <span class="seventeen">17</span></h1>
+  <p class="subtitle">The Atlantic Puffin Council convened on a very cold rock, reviewed your file (phone: dying, sleep: deceased), and voted unanimously to throw you this website anyway.</p>
+  <p class="poke-hint">👇 poke the puffin. he read your file. all of it.</p>
+
+  <div class="stage">
+    <div class="bubble" id="bubble" role="status" aria-live="polite"></div>
+    <svg id="puffin" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-label="Sir Puffington, an interactive puffin. Click to hear a roast.">
+      <path d="M75 205 l-12 12 h24 z" fill="#FF7A1F"/>
+      <path d="M125 205 l-12 12 h24 z" fill="#FF7A1F"/>
+      <ellipse cx="100" cy="130" rx="62" ry="80" fill="#4A1631"/>
+      <ellipse cx="100" cy="145" rx="44" ry="62" fill="#FFF6FA"/>
+      <ellipse cx="42" cy="135" rx="16" ry="46" fill="#4A1631" transform="rotate(14 42 135)"/>
+      <ellipse cx="158" cy="135" rx="16" ry="46" fill="#4A1631" transform="rotate(-14 158 135)"/>
+      <circle cx="100" cy="70" r="48" fill="#4A1631"/>
+      <path d="M62 62 a46 46 0 0 1 76 0 a40 46 0 0 1 -38 34 a40 46 0 0 1 -38 -34" fill="#FFEDF4"/>
+      <g class="eye"><circle cx="80" cy="62" r="9" fill="#4A1631"/><circle id="pupilL" cx="82" cy="60" r="3.2" fill="#fff"/></g>
+      <g class="eye"><circle cx="120" cy="62" r="9" fill="#4A1631"/><circle id="pupilR" cx="122" cy="60" r="3.2" fill="#fff"/></g>
+      <g id="beak">
+        <path d="M100 66 L142 78 Q120 102 100 92 Q80 102 58 78 Z" fill="#FFC53D"/>
+        <path d="M100 66 L142 78 Q133 90 118 95 L100 84 L82 95 Q67 90 58 78 Z" fill="#FF4D8D"/>
+        <path d="M100 66 L142 78 Q138 84 130 89 L100 76 L70 89 Q62 84 58 78 Z" fill="#FF7A1F"/>
+      </g>
+      <circle cx="63" cy="82" r="6" fill="#FFB3CD" opacity=".8"/>
+      <circle cx="137" cy="82" r="6" fill="#FFB3CD" opacity=".8"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ================= BATTERY GAME ================= -->
+<section id="battery">
+  <div class="sec-label">Exhibit A · The Phone Situation</div>
+  <h2>Phone ER 🚑🔋</h2>
+  <p class="lead">Zara's phone is coding — medically AND literally. Her apps keep launching THEMSELVES and draining the battery. <b>Tap the apps to close them</b> and get her to 100% for the first time in recorded history. Every open app drains faster. Good luck.</p>
+  <div class="card">
+    <div class="batt-arena" id="battArena">
+      <div class="batt-toast" id="battToast"></div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="batt-icon"><div class="batt-fill" id="battFill" style="width:40%"></div></div>
+          <div class="batt-pct" id="battPct">40%</div>
+          <div style="font-size:.58rem;opacity:.7">zara's phone (barely)</div>
+        </div>
+      </div>
+    </div>
+    <div class="batt-status" id="battStatus">the apps are waiting. they're always waiting.</div>
+    <div style="text-align:center;margin-top:.8rem"><button class="btn" id="battStart">🚑 START RESUSCITATION</button></div>
+  </div>
+</section>
+
+<!-- ================= SLEEP GAME ================= -->
+<section id="sleep">
+  <div class="sec-label">Exhibit B · The Sleep Investigation</div>
+  <h2>Operation: Put Zara to Sleep 🌙</h2>
+  <p class="lead">It's midnight. Zara says she's "about to sleep" (a lie). Temptations are floating up toward her — <b>pop them before they reach the top</b>. Every one that gets through pushes her bedtime 30 minutes later. If the clock hits her natural habitat (4AM), the temptations win. Pop 15 and she actually sleeps. Allegedly.</p>
+  <div class="card">
+    <div class="sleep-arena" id="sleepArena">
+      <div class="sleep-clockface" id="sleepClock">12:00 AM</div>
+      <div class="sleep-moon">🌙</div>
+      <div class="sleep-zara" title="zara, allegedly sleeping">🛌📱</div>
+      <div class="sleep-msg" id="sleepMsg">
+        <h3>🌙 lights out?</h3>
+        <p>defend her bedtime. the temptations are relentless. so is she.</p>
+        <button class="btn" id="sleepStart">tuck her in</button>
+      </div>
+    </div>
+    <div class="sleep-meter">
+      <label>SLEEP SCHEDULE COOKED-O-METER</label>
+      <div class="bar"><div class="fill" id="cookedFill"></div></div>
+    </div>
+    <div class="batt-status" id="sleepStatus"></div>
+  </div>
+</section>
+
+<!-- ================= DOODLE ================= -->
+<section id="doodle">
+  <div class="sec-label">Exhibit C · The Pfp Trial</div>
+  <h2>Recreate Zara's Iconic Pfp 🎨</h2>
+  <p class="lead">Zara's profile picture — THE pink heart doodle, drawn once and ridden into eternity — has been her entire personality for years. <b>Draw your own version</b> and Sir Puffington (a certified art critic, apparently) will judge whether it's worthy of the original.</p>
+  <div class="card doodle-wrap">
+    <div class="doodle-flex">
+      <div class="doodle-ref">
+        <div class="ref-circle"><svg viewBox="0 0 200 200"><use href="#pfpSym"/></svg></div>
+        <span>THE ORIGINAL™</span>
+      </div>
+      <canvas id="doodleCanvas" width="600" height="380"></canvas>
+    </div>
+    <div class="doodle-tools">
+      <div class="swatch sel" data-c="#FF4D8D" style="background:#FF4D8D" title="hot pink"></div>
+      <div class="swatch" data-c="#FFB3CD" style="background:#FFB3CD" title="blush"></div>
+      <div class="swatch" data-c="#F2247A" style="background:#F2247A" title="deep pink"></div>
+      <div class="swatch" data-c="#FF7A1F" style="background:#FF7A1F" title="puffin beak"></div>
+      <div class="swatch" data-c="#4A1631" style="background:#4A1631" title="berry"></div>
+      <button class="btn alt" id="clearDoodle">🧽 Clear</button>
+      <button class="btn" id="judgeDoodle">👨‍⚖️ Judge my heart</button>
+    </div>
+    <div class="doodle-verdict" id="doodleVerdict"></div>
+  </div>
+</section>
+
+<!-- ================= COUNCIL FILE ================= -->
+<section id="file">
+  <div class="sec-label">Exhibit D · The Council File</div>
+  <h2>Subject: "ZOIIIII ♡" 🗂️</h2>
+  <p class="lead">The council pulled the official file on <b>@itsm.eee165</b>. The numbers have been verified, cross-examined, and laughed at. <b>Tap each stat</b> for the official analysis. Tap the pfp too. Everything here is tappable. Everything here is evidence.</p>
+  <div class="ig-card">
+    <div class="ig-stamp">CLASSIFIED</div>
+    <div class="ig-top">
+      <div class="ig-pfp" id="igPfp" title="tap the legendary pfp">
+        <svg viewBox="0 0 200 200"><use href="#pfpSym"/></svg>
+      </div>
+      <div class="ig-names">
+        <h3>itsm.eee165</h3>
+        <div class="handle">ZOIIIII ♡ · verified by absolutely nobody</div>
+      </div>
+    </div>
+    <div class="ig-stats">
+      <div class="ig-stat" data-v="posts"><b>0</b><span>posts</span></div>
+      <div class="ig-stat" data-v="followers"><b>31</b><span>followers</span></div>
+      <div class="ig-stat" data-v="following"><b>177</b><span>following</span></div>
+    </div>
+    <button class="btn ig-follow" id="followBtn">Following ▾</button>
+    <div class="ig-verdict" id="igVerdict">tap a stat for the council's official analysis ↑</div>
+  </div>
+</section>
+
+<!-- ================= INTERROGATION ================= -->
+<section id="interrogation">
+  <div class="sec-label">Exhibit E · The Interrogation</div>
+  <h2>Sir Puffington Has Questions 🕵️</h2>
+  <p class="lead">Type your answers, Zara. Lying is pointless. He already knows everything.</p>
+  <div class="card">
+    <div class="chat" id="chat"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="type your answer…" maxlength="120" autocomplete="off">
+      <button class="btn" id="chatSend">➤</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAKE ================= -->
+<section id="cake" class="cake-zone">
+  <div class="sec-label">The Main Event</div>
+  <h2>Blow Out the Candles 🎂</h2>
+  <p class="lead" style="margin-left:auto;margin-right:auto">17 candles. Click each flame to blow it out — or swipe your finger/mouse across them like an absolute agent of chaos.</p>
+  <svg id="cakeSvg" viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" aria-label="Birthday cake with 17 candles. Click or swipe over flames.">
+    <ellipse cx="180" cy="278" rx="150" ry="16" fill="#F2247A" opacity=".3"/>
+    <rect x="60" y="200" width="240" height="70" rx="12" fill="#FF4D8D"/>
+    <path d="M60 212 q15 16 30 0 q15 16 30 0 q15 16 30 0 q15 16 30 0 q15 16 30 0 q15 16 30 0 q15 16 30 0 q15 16 30 0 v-14 h-240 z" fill="#FFF6FA"/>
+    <rect x="105" y="140" width="150" height="62" rx="10" fill="#FF7A1F"/>
+    <path d="M105 150 q12 14 25 0 q12 14 25 0 q12 14 25 0 q12 14 25 0 q12 14 25 0 q12 14 25 0 v-12 h-150 z" fill="#FFC53D"/>
+    <text x="180" y="246" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="26" fill="#FFF6FA">ZARA · 17</text>
+    <g id="candleGroup"></g>
+  </svg>
+  <div class="wish" id="wishMsg"></div>
+  <div class="candles-left" id="candlesLeft">17 candles remaining</div>
+</section>
+
+<!-- ================= FINALE ================= -->
+<section class="finale" id="finale">
+  <div class="sec-label">Fine, We'll Be Nice Now</div>
+  <h2>For real though, Zara —</h2>
+  <p class="lead" style="margin:1rem auto 0">Puffins pick one partner-in-crime and come back to them on the same rock every single year, no matter how far they fly. That's the deal here too. Happy 17th to the funniest, most main-character human in the whole Atlantic — dead phone, cursed sleep schedule, 0 posts, 31 followers, one legendary heart doodle, and all. The council loves you, ZOIIIII ♡. 💗</p>
+  <button class="btn" id="partyBtn" style="margin-top:2rem">🎉 CONFETTI. NOW.</button>
+  <p class="from">— from your favorite person &amp; one extremely judgmental puffin</p>
+</section>
+
+<footer>Built with 🐟, 💗, and zero apologies · Atlantic Puffin Council est. always</footer>
+
+<script>
+/* ============ heart cursor trail ============ */
+let lastTrail = 0;
+const heartChars = ['💗','🩷','💖','♡'];
+document.addEventListener('pointermove', e=>{
+  const now = Date.now();
+  if (now - lastTrail < 80) return;
+  lastTrail = now;
+  const h = document.createElement('div');
+  h.className = 'trail';
+  h.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
+  h.style.left = (e.clientX - 7) + 'px';
+  h.style.top = (e.clientY - 7) + 'px';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(), 900);
+});
+
+/* ============ puffin poke ============ */
+const puffin = document.getElementById('puffin');
+const bubble = document.getElementById('bubble');
+const squawks = [
+  "SQUAWK. You must be Zara. Your phone battery filed a missing person report.",
+  "I've seen your sleep schedule. I've seen shipwrecks with more structure.",
+  "17 already? In puffin years that's still 'falls asleep at 4am watching edits.'",
+  "Your pfp has been the same pink heart doodle since forever. Iconic? Yes. Lazy? Also yes.",
+  "Zara once called me 'a penguin.' I have not forgotten. I will NEVER forget.",
+  "Fun fact: I flap 400 times a minute. Your phone dies faster than that.",
+  "The council reviewed your file. The words 'chronically at 2%' appear 47 times.",
+  "You keep poking me. No boundaries. Classic Zara. SQUAWK.",
+  "The file says 0 posts, 31 followers, 177 following. That's not a profile, that's a stakeout, 'ZOIIIII ♡'.",
+  "Zero posts since the account was born. The lore stays PRIVATE. The council respects the mystery. Reluctantly.",
+  "Between us? You're actually great. Don't tell anyone I said that. I have a reputation.",
+];
+let squawkIdx = 0, bubbleTimer;
+puffin.addEventListener('click', ()=>{
+  puffin.classList.remove('wobble'); void puffin.offsetWidth; puffin.classList.add('wobble');
+  bubble.textContent = squawks[squawkIdx % squawks.length]; squawkIdx++;
+  bubble.classList.add('show');
+  clearTimeout(bubbleTimer);
+  bubbleTimer = setTimeout(()=>bubble.classList.remove('show'), 4200);
+});
+const pL = document.getElementById('pupilL'), pR = document.getElementById('pupilR');
+document.addEventListener('mousemove', e=>{
+  const r = puffin.getBoundingClientRect();
+  const cx = r.left + r.width/2, cy = r.top + r.height*0.28;
+  const ang = Math.atan2(e.clientY - cy, e.clientX - cx);
+  const dx = Math.cos(ang)*3, dy = Math.sin(ang)*3;
+  pL.setAttribute('cx', 80+dx); pL.setAttribute('cy', 60+dy);
+  pR.setAttribute('cx', 120+dx); pR.setAttribute('cy', 60+dy);
+});
+
+/* ============ battery game (app whack-a-mole) ============ */
+const arena = document.getElementById('battArena');
+const battFill = document.getElementById('battFill');
+const battPct = document.getElementById('battPct');
+const battToast = document.getElementById('battToast');
+const battStatus = document.getElementById('battStatus');
+let charge = 40, battOn = false, appTimer, battTimer;
+const appList = [
+  ['🎬','reels (hour 3)'],['📸','selfie #9,001'],['💬','left on read'],
+  ['🎵','same song x47'],['👀','story stalking'],['🛍️','cart (never buys)'],
+  ['📺','2hr video'],['🌐','47 open tabs'],
+];
+function toast(msg){
+  battToast.textContent = msg;
+  battToast.classList.add('show');
+  setTimeout(()=>battToast.classList.remove('show'), 2200);
+}
+function updateBatt(){
+  charge = Math.max(0, Math.min(100, charge));
+  battPct.textContent = Math.round(charge)+'%';
+  battFill.style.width = charge+'%';
+  battFill.style.background = charge<20 ? '#E8503A' : charge<60 ? '#FFC53D' : '#3DBE72';
+}
+updateBatt();
+document.getElementById('battStart').addEventListener('click', startBatt);
+function startBatt(){
+  charge = 40; battOn = true; updateBatt();
+  battStatus.textContent = 'CLOSE. THE. APPS.';
+  document.getElementById('battStart').style.display = 'none';
+  clearInterval(appTimer); clearInterval(battTimer);
+  arena.querySelectorAll('.app,.zapnote').forEach(x=>x.remove());
+  appTimer = setInterval(spawnApp, 800);
+  battTimer = setInterval(tickBatt, 300);
+  spawnApp(); spawnApp();
+}
+function spawnApp(){
+  if (!battOn || arena.querySelectorAll('.app').length >= 7) return;
+  const a = appList[Math.floor(Math.random()*appList.length)];
+  const el = document.createElement('div');
+  el.className = 'app';
+  el.style.background = ['#FF4D8D','#B3265C','#FF7A1F','#8A3B5E'][Math.floor(Math.random()*4)];
+  el.innerHTML = '<div class="ic">'+a[0]+'</div><div class="nm">'+a[1]+'</div>';
+  const w = arena.clientWidth, h = arena.clientHeight;
+  let x, y, tries = 0;
+  do { x = Math.random()*(w-72); y = Math.random()*(h-72); tries++; }
+  while (tries < 25 && x > w/2-115 && x < w/2+62 && y > h/2-125 && y < h/2+115);
+  el.style.left = x+'px'; el.style.top = y+'px';
+  el.addEventListener('pointerdown', ()=>{
+    if (!battOn) return;
+    el.classList.add('bye'); setTimeout(()=>el.remove(), 220);
+    charge += 3; updateBatt();
+    const z = document.createElement('div');
+    z.className = 'zapnote'; z.textContent = '+3% ⚡';
+    z.style.left = x+'px'; z.style.top = y+'px';
+    arena.appendChild(z); setTimeout(()=>z.remove(), 1000);
+  });
+  arena.appendChild(el);
+}
+function tickBatt(){
+  if (!battOn) return;
+  const open = arena.querySelectorAll('.app').length;
+  charge -= 0.32 + open*0.27;
+  updateBatt();
+  if (Math.random() < .04) toast([
+    'reels opened ITSELF. classic.',
+    '"low power mode? never heard of her" — Zara',
+    'an app respawned. they always do.',
+    'brightness: max. of course.',
+  ][Math.floor(Math.random()*4)]);
+  if (charge <= 0) endBatt(false);
+  else if (charge >= 100) endBatt(true);
+}
+function endBatt(win){
+  battOn = false;
+  clearInterval(appTimer); clearInterval(battTimer);
+  arena.querySelectorAll('.app,.zapnote').forEach(x=>x.remove());
+  const b = document.getElementById('battStart');
+  b.style.display = ''; b.textContent = win ? '🏆 run it back' : '💀 revive & retry';
+  if (win){
+    battStatus.textContent = "🏆 100%!! You did what Zara couldn't in 17 YEARS. Screenshot it. She won't believe you.";
+    confettiBurst(90);
+  } else {
+    battPct.textContent = 'RIP';
+    battStatus.textContent = '💀 0%. The phone has died. As is tradition. As is prophecy.';
+  }
+}
+
+/* ============ sleep game (temptation defense) ============ */
+const sArena = document.getElementById('sleepArena');
+const sClock = document.getElementById('sleepClock');
+const sMsg = document.getElementById('sleepMsg');
+const sStatus = document.getElementById('sleepStatus');
+const cookedFill = document.getElementById('cookedFill');
+let sOn = false, popped = 0, misses = 0, sSpawner;
+const sleepTimes = ['12:00 AM','12:30 AM','1:00 AM','1:30 AM','2:00 AM','2:30 AM','3:00 AM','3:30 AM','4:00 AM'];
+const tempts = ['one more reel 🎬','drama thread pt. 12 🍿','3AM noodles 🍜',
+  'random 2hr video 📺','replying NOW?? 💬','staring at ceiling 👁️',
+  'who viewed my story 👀','one more episode 📱','deep-dive: why cats purr 🐈'];
+document.getElementById('sleepStart').addEventListener('click', startSleep);
+function startSleep(){
+  sOn = true; popped = 0; misses = 0;
+  sClock.textContent = sleepTimes[0];
+  cookedFill.style.width = '0%';
+  sMsg.style.display = 'none';
+  sStatus.textContent = 'pop the temptations!! popped: 0 / 15';
+  sArena.querySelectorAll('.tempt').forEach(t=>t.remove());
+  clearInterval(sSpawner);
+  sSpawner = setInterval(spawnTempt, 850);
+  spawnTempt();
+}
+function spawnTempt(){
+  if (!sOn) return;
+  const el = document.createElement('div');
+  el.className = 'tempt';
+  el.textContent = tempts[Math.floor(Math.random()*tempts.length)];
+  el.style.left = (5 + Math.random()*55) + '%';
+  sArena.appendChild(el);
+  const dur = 3000 + Math.random()*2400;
+  const anim = el.animate([{bottom:'-70px'},{bottom:(sArena.clientHeight+10)+'px'}],{duration:dur,fill:'forwards'});
+  let done = false;
+  anim.onfinish = ()=>{
+    if (done){ el.remove(); return; }
+    done = true; el.remove();
+    if (sOn) missTempt();
+  };
+  el.addEventListener('pointerdown', ()=>{
+    if (done || !sOn) return;
+    done = true; anim.pause();
+    el.classList.add('pop'); setTimeout(()=>el.remove(), 200);
+    popped++;
+    sStatus.textContent = 'popped: ' + popped + ' / 15';
+    if (popped >= 15) endSleep(true);
+  });
+}
+function missTempt(){
+  misses++;
+  sClock.textContent = sleepTimes[Math.min(misses, 8)];
+  cookedFill.style.width = (misses/8*100) + '%';
+  sClock.animate([{transform:'translateX(-50%) scale(1)'},{transform:'translateX(-50%) scale(1.25)'},{transform:'translateX(-50%) scale(1)'}],{duration:300});
+  if (misses >= 8) endSleep(false);
+}
+function endSleep(win){
+  sOn = false;
+  clearInterval(sSpawner);
+  sArena.querySelectorAll('.tempt').forEach(t=>t.remove());
+  sMsg.style.display = 'flex';
+  sMsg.innerHTML = win
+    ? '<h3>😴 ASLEEP BEFORE 4AM??</h3><p style="max-width:26rem">Alert the press. Alert the council. This has literally never happened before. (In this simulation. ONLY in this simulation.)</p><button class="btn" id="sleepRe">run it back</button>'
+    : '<h3>🕐 4:00 AM.</h3><p style="max-width:26rem">The temptations won. The sleep schedule remains cooked. Nature is healing. Zara is not.</p><button class="btn" id="sleepRe">try to save her again</button>';
+  document.getElementById('sleepRe').addEventListener('click', startSleep);
+  if (win) confettiBurst(60);
+}
+
+/* ============ doodle canvas ============ */
+const canvas = document.getElementById('doodleCanvas');
+const ctx = canvas.getContext('2d');
+let drawing = false, strokes = 0, inkColor = '#FF4D8D', lastPt = null;
+function canvasPos(e){
+  const r = canvas.getBoundingClientRect();
+  return {x:(e.clientX-r.left)*(canvas.width/r.width), y:(e.clientY-r.top)*(canvas.height/r.height)};
+}
+canvas.addEventListener('pointerdown', e=>{
+  e.preventDefault(); drawing = true; strokes++;
+  lastPt = canvasPos(e);
+  canvas.setPointerCapture(e.pointerId);
+});
+canvas.addEventListener('pointermove', e=>{
+  if (!drawing) return;
+  const p = canvasPos(e);
+  ctx.strokeStyle = inkColor;
+  ctx.lineWidth = 9; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(lastPt.x,lastPt.y); ctx.lineTo(p.x,p.y); ctx.stroke();
+  lastPt = p;
+});
+canvas.addEventListener('pointerup', ()=>drawing=false);
+document.querySelectorAll('.swatch').forEach(s=>{
+  s.addEventListener('click', ()=>{
+    document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('sel'));
+    s.classList.add('sel');
+    inkColor = s.dataset.c;
+  });
+});
+document.getElementById('clearDoodle').addEventListener('click', ()=>{
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  strokes = 0;
+  document.getElementById('doodleVerdict').textContent = '';
+});
+const doodleVerdicts = [
+  "Hmm. It has… heart-adjacent energy. Zara's pfp remains undefeated, but the council awards you 7/10 fish. 🐟",
+  "Bold. Abstract. Slightly cursed. Exactly like Zara at 3AM. The council approves. 8.5/10.",
+  "The original pink heart doodle is shaking. Literally trembling. 9/10, docked one point for making Zara's pfp feel threatened.",
+  "…is this a heart or a potato with feelings? Either way it's more charged than Zara's phone. 6/10.",
+  "MASTERPIECE. Hanging this in the colony's cliff. Zara could never. (She could. Don't tell her.) 10/10. 💗",
+];
+document.getElementById('judgeDoodle').addEventListener('click', ()=>{
+  const v = document.getElementById('doodleVerdict');
+  if (strokes === 0){
+    v.textContent = "You drew… nothing. A blank canvas. The 'Zara replying to texts' of artworks. 0/10.";
+    return;
+  }
+  // check ink coverage
+  const data = ctx.getImageData(0,0,canvas.width,canvas.height).data;
+  let ink = 0;
+  for (let i=3;i<data.length;i+=4){ if (data[i]>0) ink++; }
+  const pct = ink/(canvas.width*canvas.height)*100;
+  if (pct < 0.4){
+    v.textContent = "That's not a heart, that's a rumor of a heart. Commit, coward. Draw bigger. 2/10.";
+  } else if (pct > 25){
+    v.textContent = "You colored the ENTIRE canvas?? This is a heart the way 4AM is a bedtime. Chaotic. Zara-coded. 11/10.";
+    confettiBurst(60);
+  } else {
+    v.textContent = doodleVerdicts[Math.floor(Math.random()*doodleVerdicts.length)];
+    if (Math.random()>.5) confettiBurst(40);
+  }
+});
+
+/* ============ interrogation chat ============ */
+const chat = document.getElementById('chat');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+let step = 0, waiting = false;
+
+const script = [
+  {
+    q:"🐧 First question, birthday girl. What percentage is your phone battery on RIGHT NOW? Numbers only. No lying — I can smell a lie from 4,000 km.",
+    reply: ans=>{
+      const n = parseInt(ans.replace(/[^0-9]/g,''));
+      if (isNaN(n)) return "That's… not a number. Deflecting already. Interesting. I'll write down '3%' since we both know that's the truth.";
+      if (n<=10) return "Ah, "+n+"%. Her natural habitat. At least you're honest. The council respects honesty. And low standards, apparently.";
+      if (n<=30) return n+"%? Living dangerously luxurious today, are we. Enjoy it — we both know it'll be 2% within the hour.";
+      if (n<=79) return n+"%?? Suspiciously healthy. Did someone ELSE charge this phone? Blink twice if you're being held hostage by a charger.";
+      return n+"%?! IMPOSSIBLE. FRAUD. The council demands a screenshot. This is the most unbelievable thing said on this website, and this website contains a talking puffin.";
+    }
+  },
+  {
+    q:"🐧 Next. In ONE word: how would you describe your sleep schedule?",
+    reply: ans=>{
+      const a = ans.toLowerCase();
+      if (/(good|fine|great|normal|ok|okay|healthy|perfect)/.test(a))
+        return "'"+ans+"'?? The Lie Detector just burst into flames. Your sleep schedule has a crime scene outline around it. Moving on.";
+      if (/(bad|cooked|dead|awful|terrible|cursed|ruined|horrible|trash|non|gone)/.test(a))
+        return "'"+ans+".' Finally, self-awareness. The first step is admitting it. The second step is sleeping before 3AM, but let's not get crazy.";
+      return "'"+ans+".' Poetic. Vague. Evasive. Exactly what someone with a 4AM bedtime would say. Noted in the file.";
+    }
+  },
+  {
+    q:"🐧 The file states: 0 posts. 31 followers. 177 following. Explain the ratio, 'ZOIIIII ♡'. Take your time. We have all night — well, YOU do. You're up till 4AM anyway.",
+    reply: ans=>{
+      const a = ans.toLowerCase();
+      if (/(don'?t care|idc|idk|dunno|whatever|none|business)/.test(a))
+        return "Deflection. Predictable. For the record: you follow 177 accounts, post NOTHING, and lurk in silence. That's not a user, that's SURVEILLANCE. The council is honestly impressed.";
+      if (/(quality|private|mysterious|mystery|lurk|vibe|aesthetic)/.test(a))
+        return "'"+ans+"' — spoken like a true ghost account. Watching everyone. Revealing nothing. One (1) heart doodle standing between you and total anonymity. Iconic. Terrifying. Iconic.";
+      return "'"+ans+".' Noted. The math still says you consume 177 people's content and contribute one heart doodle to society. The council rules this... honestly? Efficient.";
+    }
+  },
+  {
+    q:"🐧 Say one (1) nice thing about the person who made you this website. This is mandatory. There are witnesses.",
+    reply: ans=>{
+      if (ans.trim().length < 4) return "That's IT?? They coded an entire puffin for you. Try harder next time. Fine, logged under 'reluctant affection.' Typical.";
+      return "Hmm. '"+ans+".' …Acceptable. Actually kind of sweet. Ugh. The council is emotional now. This is YOUR fault.";
+    }
+  },
+  {
+    q:"🐧 Final question. You're 17 now. What's the birthday wish? (Wishing for 'a phone that holds charge' is valid and honestly recommended.)",
+    reply: ans=>{
+      const a = ans.toLowerCase();
+      if (/(battery|charge|phone)/.test(a)) return "A practical wish. The council WEEPS with pride. Wish granted*. (*battery not included. ironically.)";
+      if (/(sleep)/.test(a)) return "Wishing for sleep and then staying up till 4AM anyway. The audacity. The consistency. Wish granted anyway. 💗";
+      return "'"+ans+".' Logged, sealed, and sent to the wish department (a puffin named Greg). Consider it handled. Happy 17th, Zara. 🎂";
+    },
+    end:true
+  },
+];
+
+function addMsg(text, who){
+  const m = document.createElement('div');
+  m.className = 'msg '+who;
+  m.textContent = text;
+  chat.appendChild(m);
+  chat.scrollTop = chat.scrollHeight;
+}
+function puffinSays(text, done){
+  const t = document.createElement('div');
+  t.className = 'typing'; t.textContent = '•••';
+  chat.appendChild(t); chat.scrollTop = chat.scrollHeight;
+  setTimeout(()=>{
+    t.remove(); addMsg(text,'puffin');
+    if (done) done();
+  }, 900 + Math.random()*500);
+}
+function askNext(){
+  if (step < script.length) puffinSays(script[step].q, ()=>{ waiting=false; chatInput.focus({preventScroll:true}); });
+}
+function sendAnswer(){
+  const val = chatInput.value.trim();
+  if (!val || waiting || step >= script.length) return;
+  addMsg(val,'zara');
+  chatInput.value = '';
+  waiting = true;
+  const item = script[step];
+  puffinSays(item.reply(val), ()=>{
+    step++;
+    if (item.end){
+      setTimeout(()=>puffinSays("🐧 Interrogation complete. Verdict: guilty of being iconic. Now go blow out your candles. ↓"),800);
+      chatInput.placeholder = "interrogation complete 💗";
+      chatInput.disabled = true; chatSend.disabled = true;
+    } else {
+      setTimeout(askNext, 700);
+    }
+  });
+}
+chatSend.addEventListener('click', sendAnswer);
+chatInput.addEventListener('keydown', e=>{ if(e.key==='Enter') sendAnswer(); });
+puffinSays("🐧 *adjusts tiny monocle* Zara. Sit down. We need to talk.", ()=>setTimeout(askNext,600));
+
+/* ============ cake ============ */
+const group = document.getElementById('candleGroup');
+const wishMsg = document.getElementById('wishMsg');
+const candlesLeft = document.getElementById('candlesLeft');
+let lit = 17;
+const flamePairs = [];
+for (let i=0;i<17;i++){
+  const row = Math.floor(i/9);
+  const idx = row===0 ? i : i-9;
+  const startX = row===0 ? 76 : 96;
+  const gap = row===0 ? 26 : 24;
+  const x = startX + idx*gap;
+  const y = row===0 ? 140 : 200;
+  const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.innerHTML =
+    '<rect x="'+(x-3)+'" y="'+(y-26)+'" width="6" height="26" rx="2" fill="'+(i%2?'#FFF6FA':'#FFB3CD')+'"/>'+
+    '<rect x="'+(x-3)+'" y="'+(y-18)+'" width="6" height="4" fill="#F2247A"/>'+
+    '<ellipse class="flame" cx="'+x+'" cy="'+(y-32)+'" rx="6" ry="10" fill="#FF7A1F" style="cursor:pointer;animation-delay:'+(Math.random()*0.4)+'s"/>'+
+    '<ellipse class="flame" cx="'+x+'" cy="'+(y-30)+'" rx="2.6" ry="5" fill="#FFC53D" style="pointer-events:none;animation-delay:'+(Math.random()*0.4)+'s"/>';
+  group.appendChild(g);
+  flamePairs.push(g.querySelectorAll('.flame'));
+}
+function blowOut(flames){
+  if (flames[0].classList.contains('out')) return;
+  flames.forEach(f=>f.classList.add('out'));
+  lit--;
+  candlesLeft.textContent = lit>0 ? lit+' candle'+(lit===1?'':'s')+' remaining' : '';
+  const cheeky = ["phew 💨","*wheeze*","one down!","huff 💨","Zara's lungs could never","puff(in) 💨","keep going!!","almost there…"];
+  if (lit>0 && lit%3===0) wishMsg.textContent = cheeky[Math.floor(Math.random()*cheeky.length)];
+  if (lit===0){
+    wishMsg.textContent = "🎂 ALL 17 OUT! Make a wish, Zara! (Wishing for better friends is not permitted.)";
+    confettiBurst(180);
+  }
+}
+flamePairs.forEach(fl=>{
+  fl[0].addEventListener('pointerdown', ()=>blowOut(fl));
+  fl[0].addEventListener('pointerenter', e=>{ if(e.buttons>0 || e.pointerType==='touch') blowOut(fl); });
+});
+// swipe support on the whole cake
+document.getElementById('cakeSvg').addEventListener('pointermove', e=>{
+  if (e.buttons === 0 && e.pointerType !== 'touch') return;
+  const el = document.elementFromPoint(e.clientX, e.clientY);
+  if (el && el.classList && el.classList.contains('flame')){
+    flamePairs.forEach(fl=>{ if (fl[0]===el || fl[1]===el) blowOut(fl); });
+  }
+});
+
+/* ============ confetti ============ */
+const colors = ['#FF4D8D','#FFB3CD','#F2247A','#FF7A1F','#FFC53D','#FFF6FA'];
+function confettiBurst(n){
+  for (let i=0;i<n;i++){
+    const c = document.createElement('div');
+    const isHeart = Math.random() < .3;
+    c.className = 'confetti' + (isHeart?' heart':'');
+    if (isHeart){
+      c.textContent = ['💗','🩷','💖'][Math.floor(Math.random()*3)];
+    } else {
+      const size = 6+Math.random()*8;
+      c.style.width = size+'px'; c.style.height = (size*0.5)+'px';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+    }
+    c.style.left = Math.random()*100+'vw';
+    c.style.animationDuration = (2+Math.random()*2.5)+'s';
+    c.style.animationDelay = (Math.random()*0.6)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(), 5500);
+  }
+}
+document.getElementById('partyBtn').addEventListener('click', ()=>confettiBurst(240));
+
+
+/* ============ audio engine (no files needed) ============ */
+let AC = null;
+function ensureAudio(){
+  try{
+    if (!AC) AC = new (window.AudioContext||window.webkitAudioContext)();
+    if (AC.state === 'suspended') AC.resume();
+  }catch(e){}
+}
+document.addEventListener('pointerdown', ensureAudio);
+function screamSound(){
+  if (!AC) return;
+  const t = AC.currentTime;
+  const g = AC.createGain();
+  g.gain.setValueAtTime(0.001, t);
+  g.gain.exponentialRampToValueAtTime(0.85, t+0.05);
+  g.gain.exponentialRampToValueAtTime(0.001, t+1.5);
+  g.connect(AC.destination);
+  [880, 932, 1250].forEach((f0,i)=>{
+    const o = AC.createOscillator(); o.type = 'sawtooth';
+    o.frequency.setValueAtTime(f0, t);
+    o.frequency.exponentialRampToValueAtTime(f0*0.26, t+1.35);
+    const v = AC.createOscillator(); v.frequency.value = 26 + i*8;
+    const vg = AC.createGain(); vg.gain.value = 70;
+    v.connect(vg); vg.connect(o.frequency);
+    o.connect(g); o.start(t); o.stop(t+1.5); v.start(t); v.stop(t+1.5);
+  });
+  const buf = AC.createBuffer(1, AC.sampleRate*1.3, AC.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i=0;i<d.length;i++) d[i] = Math.random()*2-1;
+  const n = AC.createBufferSource(); n.buffer = buf;
+  const bp = AC.createBiquadFilter(); bp.type = 'bandpass';
+  bp.frequency.setValueAtTime(2600, t);
+  bp.frequency.exponentialRampToValueAtTime(500, t+1.3);
+  bp.Q.value = 1.4;
+  const ng = AC.createGain();
+  ng.gain.setValueAtTime(0.5, t);
+  ng.gain.exponentialRampToValueAtTime(0.001, t+1.3);
+  n.connect(bp); bp.connect(ng); ng.connect(AC.destination);
+  n.start(t);
+}
+function shutterSound(){
+  if (!AC) return;
+  const t = AC.currentTime;
+  const buf = AC.createBuffer(1, AC.sampleRate*0.06, AC.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i=0;i<d.length;i++) d[i] = (Math.random()*2-1)*(1-i/d.length);
+  const n = AC.createBufferSource(); n.buffer = buf;
+  const g = AC.createGain(); g.gain.value = 0.6;
+  n.connect(g); g.connect(AC.destination); n.start(t);
+  const o = AC.createOscillator(); o.type = 'square'; o.frequency.value = 2300;
+  const og = AC.createGain();
+  og.gain.setValueAtTime(0.28, t+0.07);
+  og.gain.exponentialRampToValueAtTime(0.001, t+0.13);
+  o.connect(og); og.connect(AC.destination);
+  o.start(t+0.07); o.stop(t+0.14);
+}
+
+/* ============ THE SNAKE ============ */
+let scared = false;
+function jumpscare(){
+  if (scared) return;
+  scared = true;
+  const sc = document.getElementById('scare');
+  sc.classList.add('on');
+  screamSound();
+  if (navigator.vibrate) navigator.vibrate([220,80,220,80,300]);
+  setTimeout(()=>{
+    sc.querySelector('.flash').classList.add('go');
+    shutterSound();
+  }, 1350);
+  setTimeout(()=>{
+    sc.querySelector('.snakewrap').style.display = 'none';
+    sc.querySelector('.laughwrap').style.display = 'flex';
+  }, 1950);
+}
+document.getElementById('scareClose').addEventListener('click', ()=>{
+  document.getElementById('scare').classList.remove('on');
+  confettiBurst(50);
+});
+
+/* ============ INTRO SEQUENCE ============ */
+const intro = document.getElementById('intro');
+const introText = document.getElementById('introText');
+const introSub = document.getElementById('introSub');
+const introPfp = document.getElementById('introPfp');
+const puffWrap = document.getElementById('introPuffinWrap');
+document.body.style.overflow = 'hidden';
+let introTimers = [];
+function it(fn, t){ introTimers.push(setTimeout(fn, t)); }
+
+it(()=>{ introText.textContent = "📡 INCOMING TRANSMISSION"; introSub.textContent = "atlantic puffin council · birthday division"; }, 300);
+it(()=>{ puffWrap.classList.add('arrive'); }, 900);
+it(()=>{ introText.textContent = "TARGET LOCATED:"; introSub.textContent = ""; }, 2400);
+it(()=>{
+  introPfp.classList.add('show');
+  introSub.textContent = "ZOIIIII ♡ · @itsm.eee165 · pfp authenticity: CONFIRMED";
+}, 2900);
+it(()=>{ introText.textContent = "INITIATING BIRTHDAY PROTOCOL 17.0…"; }, 4600);
+it(()=>{ introPfp.classList.add('small'); gateCute(); }, 5600);
+
+/* ---- the cuteness checkpoint ---- */
+const gateBtns = document.getElementById('gateBtns');
+const scanbar = document.getElementById('scanbar');
+const sfill = document.getElementById('sfill');
+function showGate(text, sub, btns){
+  introText.textContent = text;
+  introSub.textContent = sub || '';
+  gateBtns.innerHTML = '';
+  btns.forEach((b,i)=>{
+    const el = document.createElement('button');
+    el.className = 'gbtn' + (b.ghost?' ghost':'');
+    el.style.animationDelay = (i*0.12)+'s';
+    el.textContent = b.label;
+    el.addEventListener('click', ()=>b.fn(el));
+    gateBtns.appendChild(el);
+    if (b.setup) b.setup(el);
+  });
+}
+function gateCute(){
+  showGate("🚧 SECURITY CHECKPOINT","continue ONLY if you're cute.",[
+    {label:"I'm cute ✨", fn:gateDoubt},
+    {label:"I'm… not 🥲", ghost:true, fn:gateAww},
+  ]);
+}
+function gateAww(){
+  showGate("awwww. you ARE cute. don't worry. 💗","the council checked the file. it's literally documented. page one. in bold.",[
+    {label:"🥹 okay… continue →", fn:gateScan},
+  ]);
+}
+function gateDoubt(){
+  showGate("hmm. 🤨","I said continue ONLY if you're cute. that was a legally binding statement. FINAL answer?",[
+    {label:"YES. obviously 💅", fn:gateBold},
+    {label:"okay maybe not 🥲", ghost:true, fn:gateHesitate},
+  ]);
+}
+function gateHesitate(){
+  showGate("hesitation detected. logged. filed. laminated.","…still cute though. the file doesn't lie. proceed.",[
+    {label:"continue →", fn:gateScan},
+  ]);
+}
+function gateBold(){
+  showGate("confidence?? bold, from a girl with 0 posts.","fine. but we verify EVERYONE. rules are rules.",[
+    {label:"then scan me 😤", fn:gateScan},
+  ]);
+}
+function gateScan(){
+  document.getElementById('puffGlasses').classList.add('on');
+  document.getElementById('puffGlasses').setAttribute('opacity','1');
+  showGate("🔍 OFFICIAL CUTENESS SCAN","*puts on inspection glasses*",[]);
+  scanbar.style.display = 'block';
+  const steps = [
+    [15,"scanning pfp… ✅ heart doodle detected"],
+    [38,"checking follower ratio… concerning, but irrelevant to cuteness"],
+    [60,"checking sleep schedule… we don't talk about that"],
+    [82,"checking phone battery… 3%. shocking nobody"],
+    [100,"cross-referencing with council records…"],
+  ];
+  steps.forEach((s,i)=>{
+    setTimeout(()=>{ sfill.style.width = s[0]+'%'; introSub.textContent = s[1]; }, 700 + i*950);
+  });
+  setTimeout(()=>{
+    scanbar.style.display = 'none';
+    showGate("SCAN COMPLETE. ✅","no exceptions for kids. not even birthday ones. rules are rules — you're in.",[
+      {label:"😌 as expected →", fn:gateAge},
+      {label:"rude but okay 😤", ghost:true, fn:gateAge},
+    ]);
+  }, 700 + steps.length*950 + 600);
+}
+function gateAge(){
+  let dodges = 0;
+  showGate("⚠️ one LAST thing.","are you ACTUALLY turning 17 today, 'ZOIIIII ♡'?",[
+    {label:"yes 🎂", fn:gateGranted},
+    {label:"no", ghost:true,
+      fn:(el)=>{ if (dodges>=3) gateGranted(); },
+      setup:(el)=>{
+        const dodge = ()=>{
+          if (dodges>=3){
+            el.textContent = "okay FINE, yes 🎂";
+            el.classList.remove('ghost');
+            return;
+          }
+          dodges++;
+          const dx = Math.random()*160-80, dy = Math.random()*70-35;
+          el.style.transform = 'translate('+dx+'px,'+dy+'px)';
+          introSub.textContent = ["nice try.","you can't say no. it's YOUR birthday.","the button is faster than you. like your battery drain.","okay okay, it'll stop running. probably."][Math.min(dodges-1,3)];
+          if (dodges>=3){
+            setTimeout(()=>{ el.style.transform='none'; el.textContent="okay FINE, yes 🎂"; el.classList.remove('ghost'); }, 600);
+          }
+        };
+        el.addEventListener('pointerenter', dodge);
+        el.addEventListener('pointerdown', e=>{ if(dodges<3){ e.preventDefault(); dodge(); } });
+      }
+    },
+  ]);
+}
+function gateGranted(){
+  showGate("✅ ENTRY GRANTED","welcome, certified cute birthday girl. 💗",[]);
+  for (let i=0;i<26;i++){
+    const h = document.createElement('div');
+    h.className = 'intro-heart-burst';
+    h.textContent = ['💗','🩷','💖','♡'][i%4];
+    h.style.left = '50%'; h.style.top = '55%';
+    h.style.setProperty('--dx', (Math.random()*440-220)+'px');
+    h.style.setProperty('--dy', (Math.random()*440-220)+'px');
+    intro.appendChild(h);
+  }
+  setTimeout(endIntro, 1400);
+}
+
+function endIntro(){
+  introTimers.forEach(clearTimeout);
+  intro.classList.add('done');
+  document.body.style.overflow = '';
+  setTimeout(()=>intro.remove(), 1000);
+  confettiBurst(70);
+  setTimeout(jumpscare, 16000);
+}
+document.getElementById('skipIntro').addEventListener('click', endIntro);
+
+/* ============ COUNCIL FILE interactions ============ */
+const igVerdict = document.getElementById('igVerdict');
+const statVerdicts = {
+  posts: "0 posts. ZERO. Years on Instagram and she has shared NOTHING with humanity. Not lazy — 'mysterious.' Allegedly. The lore remains classified at her request.",
+  followers: "31 followers. 'It's about QUALITY,' she says, at 4AM, from under a blanket, on 3% battery. The council notes that 31 is at least more than her phone percentage.",
+  following: "Following 177 accounts while posting nothing. She sees everything. She says nothing. That's not scrolling, that's INTELLIGENCE GATHERING. Honestly? The council could use her.",
+};
+document.querySelectorAll('.ig-stat').forEach(s=>{
+  s.addEventListener('click', ()=>{
+    igVerdict.textContent = statVerdicts[s.dataset.v];
+    s.animate([{transform:'scale(1)'},{transform:'scale(1.12)'},{transform:'scale(1)'}],{duration:250});
+  });
+});
+const igPfp = document.getElementById('igPfp');
+igPfp.addEventListener('click', ()=>{
+  igPfp.animate([{transform:'rotate(0)'},{transform:'rotate(360deg) scale(1.15)'},{transform:'rotate(360deg) scale(1)'}],{duration:700,easing:'cubic-bezier(.34,1.56,.64,1)'});
+  igVerdict.textContent = "Yes. THE pfp. One heart doodle, drawn once, deployed forever across every platform known to humankind. Skill issue? No. LEGACY.";
+});
+const followStates = ["Following ▾","Still Following","Following (no choice)","Followed since day 1","She followed back?? LIES","Blocked (jk jk) 💗","Following forever ▾"];
+let fIdx = 0;
+document.getElementById('followBtn').addEventListener('click', function(){
+  fIdx = (fIdx+1) % followStates.length;
+  this.textContent = followStates[fIdx];
+});
+
+/* ============ scroll reveal ============ */
+document.querySelectorAll('section').forEach(s=>s.classList.add('pre'));
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('rev'); io.unobserve(en.target); } });
+},{threshold:.12});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+
+/* ============ hero sparkles ============ */
+const hero = document.querySelector('.hero');
+setInterval(()=>{
+  const sp = document.createElement('div');
+  sp.className = 'sparkle';
+  sp.textContent = ['✨','⭐','💫','✦'][Math.floor(Math.random()*4)];
+  sp.style.left = Math.random()*94+'%';
+  sp.style.top = Math.random()*80+'%';
+  sp.style.fontSize = (0.7+Math.random()*0.9)+'rem';
+  hero.appendChild(sp);
+  setTimeout(()=>sp.remove(), 1700);
+}, 700);
+
+/* ============ ambient swimming fish ============ */
+function spawnSwimmer(){
+  const f = document.createElement('div');
+  const flip = Math.random() > .6;
+  f.className = 'swimfish' + (flip?' flip':'');
+  f.textContent = ['🐟','🐠','🐡'][Math.floor(Math.random()*3)];
+  f.style.bottom = (3+Math.random()*12)+'vh';
+  f.style.animationDuration = (13+Math.random()*9)+'s';
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(), 23000);
+}
+setInterval(spawnSwimmer, 8000);
+setTimeout(spawnSwimmer, 7000);
+
+/* ============ click heart bursts ============ */
+document.addEventListener('pointerdown', e=>{
+  if (e.target.closest('#doodleCanvas,#battArena,#sleepArena,.chat-input,#intro,#scare')) return;
+  for (let i=0;i<6;i++){
+    const p = document.createElement('div');
+    p.className = 'pop';
+    p.textContent = ['💗','🩷','♡','✨'][i%4];
+    p.style.left = (e.clientX-8)+'px';
+    p.style.top = (e.clientY-8)+'px';
+    p.style.setProperty('--dx', (Math.random()*120-60)+'px');
+    p.style.setProperty('--dy', (Math.random()*-100-20)+'px');
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(), 700);
+  }
+});
+</script>
+</body>
+</html>
